@@ -1,14 +1,10 @@
 /* W05: Programming Tasks */
 
 /* Declare and initialize global variables */
-
 const templesElement = document.getElementById('temples');
-
 const templelist = [];
 
-
 /* async displayTemples Function */
-
 const displayTemples = async (temples) => {
     templesElement.innerHTML = ''; // Clear exisiting content
 
@@ -24,15 +20,14 @@ const displayTemples = async (temples) => {
         article.appendChild(h3);
         article.appendChild(img);
 
-        templesElement.appendChild(article);
+        templesElement.appendChild(article);        
     });
 };
 
 /* async getTemples Function using fetch()*/
-
 const getTemples = async () => {
     try {
-        const response = await fetch('https://byui-cse.github.io/cse121b-ww-course/resources/temples.json');
+        const response = await fetch("https://byui-cse.github.io/cse121b-ww-course/resources/temples.json");
         const data = await response.json();
         templelist = data;
         displayTemples(templelist);
@@ -41,16 +36,12 @@ const getTemples = async () => {
     }
 };
 
-
 /* reset Function */
-
 const reset = () => {
     templesElement.innerHTML = '';
 };
 
-
 /* sortBy Function */
-
 const sortBy = (temples) => {
     reset();
     const filter = document.getElementById('sortBy').value;
@@ -70,13 +61,11 @@ const sortBy = (temples) => {
     }
 };
 
-
 /* Event Listener */
-
 const sortByElement = document.querySelector('#sortBy').addEventListener('change', () => {
     sortBy(templelist);
 });
 
 getTemples();
 
-console.log(templelist);
+
