@@ -28,9 +28,6 @@ const displayTemples = async (temples) => {
     });
 };
 
-
-
-
 /* async getTemples Function using fetch()*/
 
 const getTemples = async () => {
@@ -60,13 +57,13 @@ const sortBy = (temples) => {
 
     switch (filter) {
         case 'utah':
-            displayTemples(temples.filter(temple => temple.location.includes("Utah"));
+            displayTemples(temples.filter(temple => temple.location.includes("Utah")));
             break;
-        case 'nonutah':
-            displayTemples(temples.filter(temple => temple.location.includes("Utah"));
+        case 'notutah':
+            displayTemples(temples.filter(temple => temple.location.includes("Utah")));
             break;
         case 'older':
-            displayTemples(temples.filter(temple => new Date(temeple.dedicatedDate) < new Date(1950, 0,1));
+            displayTemples(temples.filter(temple => new Date(temeple.dedicatedDate) < new Date(1950, 0, 1)));
             break;
             default:
                 displayTemples(temples);
@@ -74,7 +71,12 @@ const sortBy = (temples) => {
 };
 
 
+/* Event Listener */
+
+const sortByElement = document.querySelector('#sortBy').addEventListener('change', () => {
+    sortBy(templelist);
+});
 
 getTemples();
 
-/* Event Listener */
+console.log(templelist);
