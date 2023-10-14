@@ -2,7 +2,7 @@
 
 /* Declare and initialize global variables */
 
-const templesElement = document.getElementById('');
+const templesElement = document.getElementById('temples');
 
 const templelist = [];
 
@@ -53,6 +53,25 @@ const reset = () => {
 
 
 /* sortBy Function */
+
+const sortBy = (temples) => {
+    reset();
+    const filter = document.getElementById('sortBy').value;
+
+    switch (filter) {
+        case 'utah':
+            displayTemples(temples.filter(temple => temple.location.includes("Utah"));
+            break;
+        case 'nonutah':
+            displayTemples(temples.filter(temple => temple.location.includes("Utah"));
+            break;
+        case 'older':
+            displayTemples(temples.filter(temple => new Date(temeple.dedicatedDate) < new Date(1950, 0,1));
+            break;
+            default:
+                displayTemples(temples);
+    }
+};
 
 
 
