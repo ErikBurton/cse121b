@@ -11,6 +11,28 @@
         <input type="text" id="cityInput" placeholder="Please enter a city: " />
         <input type="searchButton">Search</button>
     </div>
+    <div>
+        <div id=" error" style="color: red"></div>
+        <div id="weather"></div>
+    </div>
+
+<script type="module">
+    // Import the 'fetchWeather' function from the 'weatherModule.js module'.
+    import { fetchWeather } from './weatherModule.js';
+
+    const cityInput = document.getElementbyId('cityInput');
+    const searchButton = document.getElementById('searchButton');
+    const errorDiv = document.getElementById('error');
+    const weatherDiv = document.getElementById('weather');
+
+
+
+
+
+
+
+
+</script>
 
 </div>
 <body>
