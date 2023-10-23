@@ -3,7 +3,7 @@
 export async function fetchWeather(zipCode) 
 {
     const API_KEY = "ba8471e44eecd63a6b38dd887c2cfe54";
-    const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=5&units=metric&appid=${API_KEY}`;
+    const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${zipCode}&cnt=5&units=metric&appid=${API_KEY}`;
 
 try 
 {
@@ -14,7 +14,7 @@ try
     if (!response.ok)
     {
         // If the response is not ok, then throw an error message
-        throw "City not found!";
+        throw "ZIP Code not found!";
     }
 
     // Parse the response as JSON
@@ -25,7 +25,7 @@ try
 
     // Map the list of forecast items to an array of objects with date and weather
     const forecast = data.list.map((item) => ({
-        date: item.dt.txt,
+        date: item.dt_txt,
         weather: item.weather[0].description,
     }));
 

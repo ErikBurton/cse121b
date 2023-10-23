@@ -19,10 +19,10 @@
     </div>
 
     <script type="module">
-        // Import the 'fetchWeather' function from the 'weatherModule.js module'.
+        // Import the 'fetchWeather' function from the 'w07-final.js module'.
         import { fetchWeather } from './w07-final.js';
 
-        const cityInput = document.getElementbyId('cityInput');
+        const zipCodeInput = document.getElementById('zipCodeInput');
         const searchButton = document.getElementById('searchButton');
         const errorDiv = document.getElementById('error');
         const weatherDiv = document.getElementById('weather');
@@ -30,11 +30,11 @@
         // Add event listener to the "Seach" button
         searchButton.addEventListener('click', () => 
         {
-            const city = cityInput.value;
-            if (city) 
+            const zipCode = zipCodeInput.value;
+            if (zipCode) 
             {
             // Call "fetchWeather" function with the user's input
-            fetchWeather(city)
+            fetchWeather(zipCode)
             .then((weatherData) =>
             {
                 // Display the weather data if fetch is successful
@@ -51,7 +51,7 @@
             }); 
             } else
             {
-                errorDiv.textContent = "Please enter a city!";
+                errorDiv.textContent = "Please enter a ZIP Code!";
                 weatherDiv.innerHTML = '';
             }
         }); 
