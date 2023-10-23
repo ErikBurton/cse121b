@@ -9,8 +9,9 @@
 <div id="app">
     <h1>Weather Forecast</h1>
     <div id="search">
-        <input type="text" id="cityInput" placeholder="Please enter a city: " />
-        <input type="searchButton">Search</button>
+        <label for ="zipCodeInput">Enter ZIP Code: </label>
+        <input type="text" id="zipCodeInput">
+        <button onclick="fetchWeather()">Get Weather</button>
     </div>
     <div>
         <div id=" error" style="color: red"></div>
@@ -19,7 +20,7 @@
 
     <script type="module">
         // Import the 'fetchWeather' function from the 'weatherModule.js module'.
-        import { fetchWeather } from './weatherModule.js';
+        import { fetchWeather } from './w07-final.js';
 
         const cityInput = document.getElementbyId('cityInput');
         const searchButton = document.getElementById('searchButton');
@@ -32,27 +33,28 @@
             const city = cityInput.value;
             if (city) 
             {
-                // Call "fetchWeather" function with the user's input
-                fetchWeather(city)
-                .then((weatherData)) => 
+            // Call "fetchWeather" function with the user's input
+            fetchWeather(city)
+            .then((weatherData) =>
+            {
+                // Display the weather data if fetch is successful
+                displayWeather(weatherData);
+                errorDiv.textContent = '';
+            })
+            .catch((error) => 
+            {
+                // Handle any errors and display message
                 {
-                    // Display the weather data if fetch is successful
-                    displayWeather(weatherData);
-                    errorDiv.textContent = '';
-                })
-                .catch((error) => 
-                {
-                    // Handle any errors and display message
-                    {
-                        errorDiv.textContent = error;
-                        weatherDiv.innerHTML = '';
-                    }
-                }); 
+                    errorDiv.textContent = error;
+                    weatherDiv.innerHTML = '';
+                }
+            }); 
             } else
             {
                 errorDiv.textContent = "Please enter a city!";
                 weatherDiv.innerHTML = '';
-            }); 
+            }
+        }); 
 
             // Display the forecast using dynamic templates
             function displayWeather(data)
@@ -69,5 +71,5 @@
             weatherDiv.innerHTML = template;
             }
     </script>    
-    </body>
+</body>
 </html>
