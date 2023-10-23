@@ -29,7 +29,8 @@
     searchButton.addEventListener('click', () => 
     {
         const city = cityInput.value;
-        if (city) {
+        if (city) 
+        {
             // Call "fetchWeather" function with the user's input
             fetchWeather(city)
             .then((weatherData)) => 
@@ -45,8 +46,12 @@
                     errorDiv.textContent = error;
                     weatherDiv.innerHTML = '';
                 }
-            })
-            }
+            }); 
+           } else
+           {
+            errorDiv.textContent = "Please enter a city!";
+            weatherDiv.innerHTML = '';
+           }
         }
     })
 
