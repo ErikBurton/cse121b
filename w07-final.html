@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Weather Forecast App</title>
 </head>
+<body>
 <div id="app">
     <h1>Weather Forecast</h1>
     <div id="search">
@@ -16,56 +17,57 @@
         <div id="weather"></div>
     </div>
 
-<script type="module">
-    // Import the 'fetchWeather' function from the 'weatherModule.js module'.
-    import { fetchWeather } from './weatherModule.js';
+    <script type="module">
+        // Import the 'fetchWeather' function from the 'weatherModule.js module'.
+        import { fetchWeather } from './weatherModule.js';
 
-    const cityInput = document.getElementbyId('cityInput');
-    const searchButton = document.getElementById('searchButton');
-    const errorDiv = document.getElementById('error');
-    const weatherDiv = document.getElementById('weather');
+        const cityInput = document.getElementbyId('cityInput');
+        const searchButton = document.getElementById('searchButton');
+        const errorDiv = document.getElementById('error');
+        const weatherDiv = document.getElementById('weather');
 
-    // Add event listener to the "Seach" button
-    searchButton.addEventListener('click', () => 
-    {
-        const city = cityInput.value;
-        if (city) 
+        // Add event listener to the "Seach" button
+        searchButton.addEventListener('click', () => 
         {
-            // Call "fetchWeather" function with the user's input
-            fetchWeather(city)
-            .then((weatherData)) => 
+            const city = cityInput.value;
+            if (city) 
             {
-                // Display the weather data if fetch is successful
-                displayWeather(weatherData);
-                errorDiv.textContent = '';
-            })
-            .catch((error) => 
-            {
-                // Handle any errors and display message
+                // Call "fetchWeather" function with the user's input
+                fetchWeather(city)
+                .then((weatherData)) => 
                 {
-                    errorDiv.textContent = error;
-                    weatherDiv.innerHTML = '';
-                }
+                    // Display the weather data if fetch is successful
+                    displayWeather(weatherData);
+                    errorDiv.textContent = '';
+                })
+                .catch((error) => 
+                {
+                    // Handle any errors and display message
+                    {
+                        errorDiv.textContent = error;
+                        weatherDiv.innerHTML = '';
+                    }
+                }); 
+            } else
+            {
+                errorDiv.textContent = "Please enter a city!";
+                weatherDiv.innerHTML = '';
             }); 
-           } else
-           {
-            errorDiv.textContent = "Please enter a city!";
-            weatherDiv.innerHTML = '';
-           }
-        }
-    })
 
-
-
-
-
-
-
-
-</script>
-
-</div>
-<body>
-    
-</body>
+            // Display the forecast using dynamic templates
+            function displayWeather(data)
+            {
+                const { city, forecast } = data;
+                const template = `
+                <h2>Weather in ${city}</h2>
+                <ul>
+                    ${forecast}
+                        .map((day) => '<li>${day.date}: ${day.weather}</li>')
+                        .join(' ')}
+                </ul>
+            `;
+            weatherDiv.innerHTML = template;
+            }
+    </script>    
+    </body>
 </html>
