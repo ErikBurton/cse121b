@@ -25,6 +25,31 @@
     const errorDiv = document.getElementById('error');
     const weatherDiv = document.getElementById('weather');
 
+    // Add event listener to the "Seach" button
+    searchButton.addEventListener('click', () => 
+    {
+        const city = cityInput.value;
+        if (city) {
+            // Call "fetchWeather" function with the user's input
+            fetchWeather(city)
+            .then((weatherData)) => 
+            {
+                // Display the weather data if fetch is successful
+                displayWeather(weatherData);
+                errorDiv.textContent = '';
+            })
+            .catch((error) => 
+            {
+                // Handle any errors and display message
+                {
+                    errorDiv.textContent = error;
+                    weatherDiv.innerHTML = '';
+                }
+            })
+            }
+        }
+    })
+
 
 
 
