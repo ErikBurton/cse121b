@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
              // Attempt to fetch weather data for the provided ZIP code
             const data = await fetchWeather(zipCode);
-            // Display the fetched weather data on the page
+            // Display the fetched weather data on the page (Template literals and array)
             cityName.textContent = `City: ${data.city}`;
             temperature.textContent = `Temperature: ${data.temperature}°F`;
             description.textContent = `Description: ${data.weatherDescription}`;
