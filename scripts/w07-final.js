@@ -3,7 +3,7 @@
 export async function fetchWeather(zipCode) 
 {
     const API_KEY = "ba8471e44eecd63a6b38dd887c2cfe54";
-    const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${zipCode}&cnt=5&units=metric&appid=${API_KEY}`;
+    const API_URL = `http://api.openweathermap.org/geo/1.0/zip?zip={zip code}&appid={API key}`;
 
 try 
 {
