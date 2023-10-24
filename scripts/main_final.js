@@ -1,5 +1,5 @@
 // Import from the 'fetchWeather' function from 'weatherModule.js' module
-import { fetchWeather } from "./weatherModule"; 
+import { fetchWeather } from './weather-module.js';
 
 // Add event listener to execute code when DOM content is loaded
 document.addEventListener("DOMContentLoaded", () => {
@@ -9,23 +9,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const temperature = document.getElementById("temperature"); // Get the element to display the temperature
     const description = document.getElementById("description"); // Get the element to display the weather description
 
-// Add a click event listener to the "Get Weather" button
-getWeatherButton.addEventListener("click", async () => {
-    const zipCode = zipCodeInput.value;
+    // Add a click event listener to the "Get Weather" button
+    getWeatherButton.addEventListener("click", async () => {
+        const zipCode = zipCodeInput.value;
 
-    try {
-        // Attempt to fetch weather for the zip provieded by the user
-        const data = await fetchWeather(zipCode);
+        try {
+            // Attempt to fetch weather for the zip provieded by the user
+            const data = await fetchWeather(zipCode);
 
-        // Display the extracted data on the page
-        cityName.textContent = `City: ${data.city}`;
-        temperature.textContent = `Temperature: ${data.temperature}`;
-        description.textContent = `Description: ${data.weatherDescription}`
-    } catch (error) {
-        // If an error occurs fetching the data, show an error message
-        cityName.textContent = ""; // Clear the city name
-        temperature.textContent = `Error: ${error.message}`; // Display error message
-        description.textContent = ""; // Clear the weather description        
-    }
+            // Display the extracted data on the page
+            cityName.textContent = `City: ${data.city}`;
+            temperature.textContent = `Temperature: ${Math.round(data.temperature)}°F`;
+            description.textContent = `Description: ${data.weatherDescription}`
+        } catch (error) {
+            // If an error occurs fetching the data, show an error message
+            cityName.textContent = ""; // Clear the city name
+            temperature.textContent = `Error: ${error.message}`; // Display error message
+            description.textContent = ""; // Clear the weather description        
+        }
     });   
 });
