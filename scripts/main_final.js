@@ -19,7 +19,7 @@ getWeatherButton.addEventListener("click", async () => {
 
         // Display the extracted data on the page
         cityName.textContent = `City: ${data.city}`;
-        temperature.textContent = `Temperature: ${data.temerature}`;
+        temperature.textContent = `Temperature: ${data.temperature}`;
         description.textContent = `Description: ${data.weatherDescription}`
     } catch (error) {
         // If an error occurs fetching the data, show an error message
